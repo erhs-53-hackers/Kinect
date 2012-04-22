@@ -3,10 +3,7 @@
  * and open the template in the editor.
  */
 package kinect;
-import org.openkinect.freenect.Context;
-import org.openkinect.freenect.Device;
-import org.openkinect.freenect.Freenect;
-import org.openkinect.freenect.LedStatus;
+import org.openkinect.freenect.*;
 
 /**
  *
@@ -16,6 +13,16 @@ import org.openkinect.freenect.LedStatus;
 public class Kinect {
  
     public static void main(String[] args) throws InterruptedException {
+        FreenectTest test = new FreenectTest();
+        FreenectTest.initKinect();
+        FreenectTest.dev.setTiltAngle(30);
+        Thread.sleep(2000);
+        test.testVideo();
+        //test.testDepth();
+        Thread.sleep(5000);
+        
+        FreenectTest.shutdownKinect();
+        /*
  
     	// DECLARATIONS
 	        Context ctx = null;
@@ -35,23 +42,40 @@ public class Kinect {
 	        //Thread.sleep(4000);
 	        //dev.setTiltAngle(-20);
 	        //Thread.sleep(4000);
-               
+               /*
                 dev.setLed(LedStatus.BLINK_RED_YELLOW);
-	        dev.setTiltAngle(50);
-                Thread.sleep(8000);
-                dev.setTiltAngle(-50);
-                Thread.sleep(8000);
-                dev.setTiltAngle(0);                
-                dev.setLed(LedStatus.BLINK_GREEN);
+                while(true) {
+	        dev.setTiltAngle(0);
+                //Thread.sleep(4000);
+                //dev.setTiltAngle(-27);
+                Thread.sleep(100); 
+                }
+               
+                               
+                dev.setLed(LedStatus.RED);
+                
+                
+                dev.setVideoFormat(VideoFormat.RGB);
+                dev.startVideo(new SimpleVideoHandler());
+                Thread.sleep(5000);
+                dev.stopVideo();
                 
  
 	    // SHUT DOWN
-                
+                dev.setLed(LedStatus.BLINK_GREEN);
 	        if (ctx != null)
 	            if (dev != null) {
 	                dev.close();
 	            }
 	        ctx.shutdown();
+                * 
+                */
+               
+                
+                
+                
+                
+                
                 
                 
     }
